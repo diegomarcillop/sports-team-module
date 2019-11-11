@@ -3,6 +3,6 @@ module.exports = {
      host: 'localhost',
      user: 'root',
      password: 'root',
-     database: 'uvo'
+     database: 'equipos_uniamazonia'
      
 }};

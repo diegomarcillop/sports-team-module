@@ -59,3 +59,23 @@ ALTER TABLE horario ADD CONSTRAINT FOREIGN KEY (id_equipo) REFERENCES equipo(id)
 ALTER TABLE matricula ADD PRIMARY KEY(codigo);
 ALTER TABLE matricula MODIFY codigo INT(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE matricula ADD CONSTRAINT FOREIGN KEY (id_equipo) REFERENCES equipo(id);
+
+
+INSERT INTO director(id, nombres, apellidos, fecha_nacimiento)
+values (123, 'Roberto','Gonzales Villanueva', '1998-02-03' );
+
+INSERT INTO equipo(id, nombre, estado, cupos, id_director)
+values (3, 'Equipo de baloncesto Femenino', 'A',15, 123);
+
+
+INSERT INTO equipo(id, nombre, estado, cupos, id_director)
+values (4, 'Equipo de baloncesto Masculino', 'A',25, 123);
+
+
+INSERT INTO equipo(id, nombre, estado, cupos, id_director)
+values (5, 'Equipo de Ultimate Femenino', 'A',30, 123);
+
+INSERT INTO lugar(id, nombre, estado) values (1,'Concha Acustica','Activo');
+
+INSERT INTO horario (dia,horas, id_lugar, id_equipo) 
+values('Jueves y Viernes', '8:00 AM A 10:00 PM',1,1);

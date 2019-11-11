@@ -1,22 +1,20 @@
 const router = require('express').Router();
-const { estudiantes } = require('../models/estudiante/estudiante'); // JSON CHAIRA
-
+const { estudiantes } = require('../models/estudiante/estudianteRegistro'); // JSON CHAIRA
+const estudianteModel = require('../models/estudiante/estudianteModel');
+const equipoModel = require('../models/equipo/equipoModel')
 
 //GET 
-router.get('/matricula/:id', (req, res) => {
-     let estudiante = {};
-     let valido = false;
-     let id = req.params.id;
-     let x;
-     console.log('AQUI');
-     for (x in estudiantes) {
-          if (id === estudiantes[x].id) {
-               estudiante = estudiantes[x];
-               valido = true;
-               break;
-          }
-     }
-     res.render('matricula/matricula',{estudiante, valido}); 
+router.get('/matricula/:id/:estado?', async (req, res) => {
+     const idEstudiante = req.params.id;
+      const equipos = await equipoModel.consultarEquipos();
+     const { estudiante, valido } = estudianteModel.consultar(idEstudiante);
+     res.render('matricula/matricula', { estudiante, valido, equipos, idEstudiante });
 });
 
+
+router.get('/matricular/:id/:idCurso', (req, res) => {
+     console.log('ESTA AQUI')
+})
+
+ 
 module.exports = router;

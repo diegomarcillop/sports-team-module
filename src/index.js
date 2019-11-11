@@ -10,7 +10,7 @@ const app =  express();
 const http = require("http").createServer(app);
 
 //Settings
-app.set('port', process.env.PORT || 3300 );
+app.set('port', process.env.PORT || 3000 );
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', hbs({
      defaultLayout:'main',
@@ -25,13 +25,12 @@ app.set('view engine','hbs');
 //Middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
-
 app.use(express.json());
 app.use(methodOverride('_method'));
 
 app.use(session({
-     secret: 'sfeducative-secrett',
-     resave: true,
+     secret:'deport-secret',
+     resave:  true,
      saveUninitialized: true
 }));
 
