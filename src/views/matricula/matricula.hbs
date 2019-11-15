@@ -2,7 +2,7 @@
      <div class="card nuevo_2 col-3 panel-one" style="max-width: 19rem;">
 
           <h6 class="  text-center p-2">Panel de informacion</h6>
-          
+
           <div class="overflow-auto">
                <div class="card nuevo shadow   rounded">
                     <h6 class="font-weight-bold text-center text p-1">Inf. Estudiante
@@ -10,7 +10,7 @@
 
                     <div class="justify-content-center">
                          <div class="">
-                              <img src="/img/default.jpg" alt="..." class="mx-auto d-block rounded-circle" width="130"
+                              <img src={{estudiante.foto}} alt="..." class="mx-auto d-block rounded-circle" width="130"
                                    height="130">
                          </div>
                     </div>
@@ -23,28 +23,28 @@
                               </div>
 
                               <div class="row m-1">
-                                   <dt class="">Nombres: </dt> 
-                                   <p class="ml-auto">{{estudiante.nombre1}}   {{estudiante.nombre2}}</p>
+                                   <dt class="">Nombres: </dt>
+                                   <p class="ml-auto">{{estudiante.nombre1}} {{estudiante.nombre2}}</p>
 
                               </div>
                               <div class="row m-1">
-                                   <dt class="">Codigo: </dt> 
+                                   <dt class="">Codigo: </dt>
                                    <p class="ml-auto">{{estudiante.codigo}}</p>
 
                               </div>
 
-                               <div class="row m-1">
-                                   <dt class="">Situación: </dt> 
+                              <div class="row m-1">
+                                   <dt class="">Situación: </dt>
                                    <p class="ml-auto">ACTIVO</p>
 
                               </div>
 
-                               <div class="row m-1">
-                                   <dt class="">Ubicacion Semestral: </dt> 
+                              <div class="row m-1">
+                                   <dt class="">Ubicacion Semestral: </dt>
                                    <p class="ml-auto">{{estudiante.semestre}}</p>
 
                               </div>
- 
+
                          </div>
                     </div>
 
@@ -56,22 +56,22 @@
                     <div class="card-body ">
                          <div class="text mr-auto">
                               <div class="row m-1">
-                                   <dt class="">Programa: </dt> 
+                                   <dt class="">Programa: </dt>
                                    <p class="ml-auto">{{estudiante.programa}}</p>
 
                               </div>
                               <div class="row m-1">
-                                   <dt class="">Jornada: </dt> 
+                                   <dt class="">Jornada: </dt>
                                    <p class="ml-auto">{{estudiante.jornada}}</p>
 
                               </div>
 
                               <div class="row m-1">
-                                   <dt class="">Pensum: </dt> 
+                                   <dt class="">Pensum: </dt>
                                    <p class="ml-auto">{{estudiante.pensum}}</p>
 
                               </div>
-                               
+
                          </div>
                     </div>
                </div>
@@ -94,116 +94,128 @@
                          <div class="card-body col-sm-12 w-100">
 
                               <div class="list-group text-center">
-                                      {{#each equipos}}
-                                    <a onclick="mostrar(panel2);" href=""  class="list-group-item list-group-item-action" >{{this.nombre}}</a>
-                                    {{/each}}
+                                   {{#each equipos }}
+                                   <a href="/matricula/{{../this.idEstudiante}}/{{this.id}}/true"
+                                        class="list-group-item list-group-item-action">{{this.nombre}}</a>
+                                   {{/each}}
                               </div>
                          </div>
                     </div>
 
 
                </div>
-               <div class="card col-md-8 nuevo_2 p-1 panel-two" >
+               <div class="card col-md-8 nuevo_2 p-1 panel-two">
                     <h6 class="  mr-auto">Datos del equipo</h6>
-                         {{#each equipos}}
-                    <div class=""  style="display:none"id="panel2" >
+                    {{#if bandera}}
+
+                    {{#each equipo}}
+                    <div class="" id="panel2">
                          <div class="panel-two-1">
-                         <div class="card ">
-                              <div class="overflow-auto">
-                                   <div class="card-body">
-                                        <div class="">
-                                             <div class="row p-0">
-                                                  <div class="form-group col-md-6 text-center">
-                                                       <dt class=" p-2">Director del equipo</dt>
-                                                       <h5 class="p-1">{{this.nombres}}</h5>
-                                                  </div>
+                              <div class="card ">
+                                   <div class="overflow-auto">
+                                        <div class="card-body">
+                                             <div class="">
+                                                  <div class="row p-0">
+                                                       <div class="form-group col-md-6 text-center">
+                                                            <dt class=" p-2">Director del equipo</dt>
+                                                            <h5 class="p-1">{{this.nombres}}</h5>
+                                                       </div>
 
-                                                  <div class="col-sm-6 text-center">
-                                                       <dt class="m-1">Cupos</dt>
-                                                       <h5 class="m-1">{{this.cupos}}</h5>
-                                                  </div>
-
-                                             </div>
-
-                                             <div class="card disponible col-md-12">
-                                                  <h6 class="mr-auto p-2   p-1">Disponible</h6>
-                                                  <div class="card-body">
-                                                       <a href="">
-                                                            <h4 class="text-center ds">
-                                                                 <p><u>Arrastre aqui para matricular</u>
-                                                                 </p>
-                                                            </h4>
-                                                       </a>
-                                                  </div>
-                                             </div>
-                                             <div class="card col-md-12">
-                                                  <h6 class=" mr-auto p-2   p-1">Horario</h6>
-                                                  <div class="card-body">
-
-                                                       <h5 class="text-center">
-                                                           {{this.dia}} de {{this.horas}} en {{this.lugarNombre}}
-                                                       </h5>
+                                                       <div class="col-sm-6 text-center">
+                                                            <dt class="m-1">Cupos</dt>
+                                                            <h5 class="m-1">{{this.cupos}}</h5>
+                                                       </div>
 
                                                   </div>
+
+
+                                                  <div class="card col-md-12">
+                                                       <h6 class=" mr-auto p-2   p-1">Horario</h6>
+                                                       <div class="card-body">
+
+                                                            <h5 class="text-center">
+                                                                 {{this.dia}} de {{this.horas}} en {{this.lugarNombre}}
+                                                            </h5>
+
+                                                       </div>
+                                                  </div>
+
                                              </div>
 
                                         </div>
-
                                    </div>
+
                               </div>
-
                          </div>
-                    </div>
-                 
-                    <div class="panel-two-2">
-                         <div class="col-md-3 but ml-auto p-0">
-                              <div class="ml-auto">
-                                   <!-- Button trigger modal -->
-                                   <a href="/matricular/{{this.idEstudiante}}/{{this.id}}"> <button type="button" class="btn btn-success btn-block " data-toggle="modal"
-                                        data-target="#exampleModalCenter">
-                                        Matricular
-                                   </button></a>
-                                    
 
-                                   <!-- Modal -->
-                                   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                             <div class="modal-content">
-                                                  <div class="modal-header text-center">
-                                                       <h6 class="font-weight-bold  ">MATRICULAR EQUIPO</h6>
-                                                       <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                       </button>
-                                                  </div>
-                                                  <div class="modal-body text-center modal_">
-                                                       <p class="">¿Estas seguro de matricular?</p>
-                                                  </div>
-                                                  <div class="modal-footer">
-                                                       <button type="button" class="btn btn-danger"
-                                                            data-dismiss="modal">Cancelar</button>
-                                                       <button type="button" class="btn btn-success">Aceptar</button>
+                         <div class="panel-two-2">
+                              <div class="col-md-3 but ml-auto p-0">
+                                   <div class="ml-auto">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-success btn-block " data-toggle="modal"
+                                             data-target="#exampleModalCenter">
+                                             Matricular
+                                        </button>
+
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                             <div class="modal-dialog modal-dialog-centered" role="document">
+                                                  <div class="modal-content">
+                                                       <div class="modal-header text-center">
+                                                            <h6 class="font-weight-bold  ">Matricular equipo</h6>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                 aria-label="Close">
+                                                                 <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                       </div>
+                                                       <div class="modal-body text-center">
+                                                            ¿Estas seguro de matricular? 
+                                                       </div>
+                                                       <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary"
+                                                                 data-dismiss="modal">Volver</button>
+                                                            <a
+                                                                 href="/matricularEquipo/{{../this.idEstudiante}}/{{this.id}}">
+
+                                                                 <button type="button"
+                                                                      class="btn btn-success">Matricular</button>
+                                                            </a>
+                                                       </div>
                                                   </div>
                                              </div>
                                         </div>
                                    </div>
                               </div>
                          </div>
-                    </div>
 
-                     
+
                     </div>
                     {{/each}}
-                     
+
+                    {{else}}
+
+                    <div class="Paan" id="panel12">
+                         <img src="/img/deport.png" alt="" width="670" height="350">
+                    </div>
+
+                    {{/ if}}
+
+
                </div>
                <div class="card col-md-12 nuevo-2 panel-tr">
 
                     <h6 class="p-2  ">Grupos matriculados y horarios</h6>
-                    <div class="overflow-auto">
 
-                         <div class="card-body">
-                              <table class="table table-hover">
+
+
+                    <div class="card-body ">
+
+                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+                              <table class="table table-bordered table-striped mb-0">
+
                                    <thead>
                                         <tr>
                                              <th scope="col">
@@ -213,7 +225,7 @@
                                                   <dt>Director</dt>
                                              </th>
                                              <th scope="col">
-                                                  <dt>Dia</dt>
+                                                  <dt>Dias</dt>
                                              </th>
                                              <th scope="col">
                                                   <dt>Horas</dt>
@@ -227,41 +239,67 @@
                                         </tr>
                                    </thead>
                                    <tbody>
+                                        {{#each horario}}
                                         <tr>
 
-                                             <td>Equipo de ruby Femenino
+                                             <td>{{this.equipoNombre}}
                                              </td>
-                                             <td>Andres Torres Mendez
+                                             <td>{{this.directorNombres}} {{ this.directorApellidos}}
                                              </td>
-                                             <td>Jueves</td>
-                                             <td>8:00 AM - 10:00 AM</td>
-                                             <td>Concha Acustica</td>
+                                             <td>{{this.dia}}</td>
+                                             <td>{{this.horas}} </td>
+                                             <td>{{this.lugarNombre}}</td>
                                              <td>
-                                                  <button class=" but btn btn-danger btn-sm"
-                                                       type="button">Cancelar</button>
-                                             </td>
-                                        </tr>
-                                        <tr>
+                                                  
+                                                       <button class=" but btn btn-danger btn-sm"
+                                                            type="button" data-toggle="modal" data-target="#modalEliminar">Cancelar</button>
+                                                  
 
-                                             <td>Equipo de ruby Femenino
-                                             </td>
-                                             <td>Andres Torres Mendez
-                                             </td>
-                                             <td>Jueves</td>
-                                             <td>8:00 AM - 10:00 AM</td>
-                                             <td>Concha Acustica</td>
-                                             <td>
-                                                  <button class="btn btn-danger btn-sm but"
-                                                       type="button">Cancelar</button>
+
+                                                  <!-- Modal -->
+                                                  <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog"
+                                                       aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                       <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                 <div class="modal-header">
+                                                                      <h6 class="font-weight-bold text-center" >
+                                                                           Cancelar matricula</h6>
+                                                                      <button type="button" class="close"
+                                                                           data-dismiss="modal" aria-label="Close">
+                                                                           <span aria-hidden="true">&times;</span>
+                                                                      </button>
+                                                                 </div>
+                                                                 <div class="modal-body text-center">
+                                                                   Seguro que deseas cancelar la matricula del  <strong>{{this.equipoNombre}}</strong>?
+                                                                 </div>
+                                                                 <div class="modal-footer">
+                                                                      <button type="button" class="btn btn-primary"
+                                                                           data-dismiss="modal">Volver</button>
+                                                                            <a
+                                                                            href="/cancelarMatricula/{{../this.idEstudiante}}/{{this.codigo}}">
+
+                                                                            <button type="button" class="btn btn-danger">Cancelar matricula</button>
+                                                                            </a>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
                                              </td>
                                         </tr>
+                                        {{/each}}
 
                                    </tbody>
                               </table>
+
                          </div>
+
                     </div>
+
+
+
                </div>
           </div>
      </div>
+</div>
 
 </div>

@@ -79,3 +79,11 @@ INSERT INTO lugar(id, nombre, estado) values (1,'Concha Acustica','Activo');
 
 INSERT INTO horario (dia,horas, id_lugar, id_equipo) 
 values('Jueves y Viernes', '8:00 AM A 10:00 PM',1,1);
+
+
+INSERT INTO horario (dia,horas, id_lugar, id_equipo) 
+values('Miercoles y Jueves', '8:00 AM A 10:00 PM',1,3);
+
+
+INSERT INTO horario (dia,horas, id_lugar, id_equipo) 
+values('Lunes y Jueves', '6:00 AM A 8:00 AM',1,5);
