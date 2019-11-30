@@ -118,14 +118,17 @@
                                                   <div class="row p-0">
                                                        <div class="form-group col-md-6 text-center">
                                                             <dt class=" p-2">Director del equipo</dt>
-                                                            <h5 class="p-1">{{this.nombres}}</h5>
+                                                            <h5 class="p-1">{{this.nombres}} {{this.apellidos}}</h5>
                                                        </div>
 
-                                                       <div class="col-sm-6 text-center">
+                                                       <div class="col-sm-3 text-center">
                                                             <dt class="m-1">Cupos</dt>
                                                             <h5 class="m-1">{{this.cupos}}</h5>
                                                        </div>
-
+                                                       <div class="col-sm-3 text-center">
+                                                            <dt class="m-1">Tipo</dt>
+                                                            <h5 class="m-1">{{this.genero}}</h5>
+                                                       </div>
                                                   </div>
 
 
@@ -134,7 +137,7 @@
                                                        <div class="card-body">
 
                                                             <h5 class="text-center">
-                                                                 {{this.dia}} de {{this.horas}} en {{this.lugarNombre}}
+                                                                 {{this.dias}} de {{this.horas}} en {{this.lugarNombre}}
                                                             </h5>
 
                                                        </div>
@@ -246,7 +249,7 @@
                                              </td>
                                              <td>{{this.directorNombres}} {{ this.directorApellidos}}
                                              </td>
-                                             <td>{{this.dia}}</td>
+                                             <td>{{this.dias}}</td>
                                              <td>{{this.horas}} </td>
                                              <td>{{this.lugarNombre}}</td>
                                              <td>
@@ -276,7 +279,7 @@
                                                                       <button type="button" class="btn btn-primary"
                                                                            data-dismiss="modal">Volver</button>
                                                                             <a
-                                                                            href="/cancelarMatricula/{{../this.idEstudiante}}/{{this.codigo}}">
+                                                                            href="/cancelarMatricula/{{../this.idEstudiante}}/{{this.codigo}}/{{this.idEquipo}}">
 
                                                                             <button type="button" class="btn btn-danger">Cancelar matricula</button>
                                                                             </a>

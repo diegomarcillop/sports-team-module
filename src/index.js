@@ -10,7 +10,7 @@ const app =  express();
 const http = require("http").createServer(app);
 
 //Settings
-app.set('port', process.env.PORT || 3000 );
+app.set('port', process.env.PORT || 3300 );
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', hbs({
      defaultLayout:'main',

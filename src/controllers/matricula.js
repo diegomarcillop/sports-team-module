@@ -8,41 +8,43 @@ let bandera = false;
 let idEstudiante;
 /// ROUTER
 //GET
-router.get('/matricula/:id/:idEquipo?/:estado?', async (req, res) => {
-     idEstudiante = req.params.id;
-     const equipos = await equipoModel.consultarEquipos(idEstudiante);
+router.get('/matricula/:id?/:idEquipo?/:estado?', async (req, res) => {
+    idEstudiante = req.params.id;
+    const { estudiante, valido, genero } = estudianteModel.consultar(idEstudiante);
+    const horario = await equipoModel.generarHorario(idEstudiante);
+    const equipos = await equipoModel.consultarEquipos(idEstudiante, genero);
+    let equipo = {};
+    bandera = req.params.estado;
     
-     const { estudiante, valido } = estudianteModel.consultar(idEstudiante);
-     bandera = req.params.estado;
-     let  equipo = {};
-     if(req.params.estado){
-           equipo = await equipoModel.consultarEquipo(req.params.idEquipo);
-     }
+    if (req.params.estado) {
+        equipo = await equipoModel.consultarEquipo(req.params.idEquipo);
+    }
 
-     const horario = await equipoModel.generarHorario(idEstudiante);
-    
     res.render('matricula/matricula', { estudiante, valido, equipos, idEstudiante, bandera, equipo, horario });
 });
 
 
 router.get('/matricularEquipo/:idEstudiante/:idEquipo', async (req, res) => {
     // variables
-     idEstudiante = req.params.idEstudiante;
-     const idEquipo = req.params.idEquipo;
-     const result = await equipoModel.registrar(idEstudiante, idEquipo);
-     
-     res.redirect(`/matricula/${idEstudiante}`);
+    idEstudiante = req.params.idEstudiante;
+    const idEquipo = req.params.idEquipo;
+    await equipoModel.registrar(idEstudiante, idEquipo);
+    res.redirect(`/matricula/${idEstudiante}`);
 
 })
 
-router.get('/cancelarMatricula/:idEstudiante/:idMatricula', async (req, res) => {
-     idEstudiante = req.params.idEstudiante;
-     const  idMatricula = req.params.idMatricula;
+router.get('/cancelarMatricula/:idEstudiante/:idMatricula/:idEquipo', async (req, res) => {
+    idEstudiante = req.params.idEstudiante;
+    const idMatricula = req.params.idMatricula;
+    const idEquipo = req.params.idEquipo;
+    await equipoModel.eliminar(idEstudiante, idMatricula, idEquipo);
 
-     console.log('id matricula ->' + idMatricula)
-     const result = await equipoModel.eliminar(idEstudiante, idMatricula);
-
-     res.redirect(`/matricula/${idEstudiante}`);
+    res.redirect(`/matricula/${idEstudiante}`);
 });
- 
+/*
+    lo del horario, que puede estar en muchos equipos
+    Lo del filtro de genero [femenino, masculino, mixto]
+    Filtro en el caso de matricular una materia que este en el mismo horario 
+    Inyección de dependencias.
+*/
 module.exports = router;
